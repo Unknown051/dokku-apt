@@ -61,6 +61,7 @@ fn-apt-command() {
 # $APP $DOKKU_IMAGE
 sleep 2
 export DEBIAN_FRONTEND=noninteractive
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 if [ -f $DIR/apt-conf ]; then
     echo "-----> Copying apt-conf file into place"
     mv -v $DIR/apt-conf /etc/apt/apt.conf.d/99dokku-apt
