@@ -72,6 +72,8 @@ if [ -f $DIR/apt-env ]; then
 fi
 if [ -f $DIR/apt-keys ]; then
     echo "-----> Installing custom apt repository keys"
+    echo "-----> Installing custom apt repository keys"
+    echo "-----> Installing custom apt repository keys"
     cat "$DIR/apt-keys" | while read key; do
         echo "-----> Looping through custom apt repository keys"
         if [ -n "\$key" ]; then
