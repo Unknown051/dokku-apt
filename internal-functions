@@ -74,7 +74,7 @@ if [ -f $DIR/apt-keys ]; then
     echo "-----> Installing custom apt repository keys"
     cat "$DIR/apt-keys" | while read key; do
         if [ -n "\$key" ]; then
-            curl -sS "\$key" > /tmp/repository.key
+            wget -q -O - "\$key" > /tmp/repository.key
             echo "       Installing \$key (sha256sum: \$(sha256sum /tmp/repository.key | cut -d' ' -f1))"
             cat /tmp/repository.key | apt-key add - >/dev/null
         fi
