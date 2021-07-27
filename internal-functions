@@ -72,11 +72,11 @@ if [ -f $DIR/apt-env ]; then
 fi
 if [ -f $DIR/apt-keys ]; then
     echo "-----> Installing google chrome package list"
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
     echo "-----> Installing custom apt repository keys"
     cat "$DIR/apt-keys" | while read key; do
         if [ -n "\$key" ]; then
-            wget -q -O - "\$key" > /tmp/repository.key
+            curl -sS "\$key" > /tmp/repository.key
             echo "       Installing \$key (sha256sum: \$(sha256sum /tmp/repository.key | cut -d' ' -f1))"
             cat /tmp/repository.key | apt-key add - >/dev/null
         fi
